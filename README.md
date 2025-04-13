@@ -67,8 +67,15 @@ pip install "uvicorn[standard]" fastapi
 uvicorn rtclient_example.server:app --reload --port 8001
 
 ```
-
-2. Em outro terminal, execute o cliente:
+2. Em outro terminal teste: 
+```bash 
+netstat -ano | findstr :8001   
+```
+O retorno deve ser algo como:  
+```
+TCP    127.0.0.1:8001         0.0.0.0:0              LISTENING       29644
+```
+3. Em outro terminal, execute o cliente:
 
 ```bash
 python rtclient_example/client.py
@@ -78,7 +85,9 @@ python rtclient_example/client.py
 Você verá no terminal algo como:
 
 ```
+Conectando ao WebSocket...
 Resposta do servidor: Echo: Hello from websocket-client!
+🔒 Conexão encerrada: 1012 
 ```
 
 ---
